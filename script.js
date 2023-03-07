@@ -31,11 +31,11 @@ map.on('load', () => {
     });
 
 //OUTDOOR RINKS LAYER
-    // Add Map Source for Vector Tileset of Outdoor Ice Rinks (ODRs) in Toronto 
+    // Add Map Source for GeoJSON of Outdoor Ice Rinks (ODRs) in Toronto 
     // Data Sourced from City of Toronto Open Data and uploaded to personal mapbox to build vector file
     map.addSource('odr', {
-        'type': 'vector',
-        'url': 'mapbox://gsamuel-uoft.14j01kfq' //Tileset id from Mapbox
+        'type': 'geojson',
+        'data': 'https://raw.githubusercontent.com/gsamue1/ggr472-lab3/main/Outdoor%20Ice%20Rinks%20-%204326.geojson' //Raw Content Github Link
     });
 
     // Adding Outdoor Rink Layer to existing basemap with simple styling
@@ -48,7 +48,6 @@ map.on('load', () => {
             'circle-color': '#627BC1', // point colour
             'circle-stroke-color': 'black' //outline colour
         },
-        'source-layer': 'Outdoor_Ice_Rinks_-_4326-dz0kt0' //Layer ID from Mapbox page
     });
  
 
@@ -108,31 +107,71 @@ document.getElementById('returnbutton').addEventListener('click', () => {
     });
 });
 
-// UNUSED CODE -- CONFIGURING POP UPS GOING FORWARD
-// When a click event occurs on a feature in the places layer, open a popup at the
-// Location of the feature, with description HTML from its properties.
-map.on('click', 'indoor-rinks-to', (e) => {
-    console.log(e);   //e is the event info triggered and is passed to the function as a parameter (e)
-     //Explore console output using Google DevTools
-    let Public_Name = e.features[0].properties.Public_Name;
-    console.log(Public_Name);
- });
+// CONFIGURING POP UPS 
+// Code Sourced: Mapbox https://docs.mapbox.com/mapbox-gl-js/example/popup-on-hover/ 
+    //INDOOR RINKS
+    //Creating Pop-Up Variable 
+    const popup_idr = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+        });
+        
+        map.on('mouseenter', 'indoor-rinks-to', (e) => {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+        
+        // Copying Coordinates array
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.Public_Name;
+        
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup_idr.setLngLat(coordinates).setHTML(description).addTo(map);
+        });
+        
+        map.on('mouseleave', 'indoor-rinks-to', () => {
+        map.getCanvas().style.cursor = '';
+        popup_idr.remove();
+        });
 
-// Change the cursor to a pointer when the mouse is over the places layer.
-map.on('mouseenter', 'indoor-rinks-to', () => {
-map.getCanvas().style.cursor = 'pointer';
-});
- 
-// Change it back to a pointer when it leaves.
-map.on('mouseleave', 'indoor-rinks-to', () => {
-map.getCanvas().style.cursor = '';
-});
+    //OUTDOOR RINKS
+    //Creating Pop Up Variable
+    const popup_odr = new mapboxgl.Popup({
+        closeButton: false,
+        closeOnClick: false
+        });
+        
+        map.on('mouseenter', 'outdoor-rinks-to', (e) => {
+        // Change the cursor style as a UI indicator.
+        map.getCanvas().style.cursor = 'pointer';
+        
+        // Copying Coordinates array
+        const coordinates = e.features[0].geometry.coordinates.slice();
+        const description = e.features[0].properties.Public_Name;
+        
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to.
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+        coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        
+        // Populate the popup and set its coordinates
+        // based on the feature found.
+        popup_odr.setLngLat(coordinates).setHTML(description).addTo(map);
+        });
+        
+        map.on('mouseleave', 'outdoor-rinks-to', () => {
+        map.getCanvas().style.cursor = '';
+        popup_odr.remove();
+        });
 
-// // //Pop Up for Outdoor Rinks
-// // map.on('click', 'indoor-rinks-to', (e) => {
-// // new mapboxgl.Popup() //Declare new popup object on each click
-// //     .setLngLat(e.lngLat) //Use method to set coordinates of popup based on mouse click location
-// //     .setHTML("<b>Rink Name:</b> " + e.features[0].properties.Public_Name + "<br>" +
-// //         "Rink Type: door") //Use click event properties to write text for popup
-// //     .addTo(map); //Show popup on map
-// // });
+    // GREEN SPACE
+    //Elected not to use pop-ups for green space because of the sheer volume, number of unnamed spaces, inability to view parks from a high level and to prevent distraction away for ice rinks as core focus of the map. 

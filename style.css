@@ -1,4 +1,9 @@
-/* Map Formatting */
+/* Navigation Bar Formatting -- Moving Nav Bar in Front */
+.navbar {
+    z-index: 5; 
+}
+
+/* Map Formatting -- Fill page and arrnage to back */
 .map {
     position: absolute;
     top: 8%;
@@ -8,8 +13,6 @@
     width: 100%;
     z-index: 0;
 }
-
-
 
 /* Overlay Search Formatting */
 .map-overlay-search {
