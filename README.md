@@ -5,6 +5,8 @@ Title: Lab 3
  
 Purpose: Websites purpose is to provide insights into locations where outdoor winter activities can be enjoyed (i.e. outdoor spaces or ice rinks)
 - This is a repository for GGR472 - Lab 3. The focus of this lab is increasing functionality of mapbox maps using Javascript and CSS.
+- Functionality was improved by adding pop-ups for the rink layers with the rink name, a legend, reformatted geocoder and a button that returns the map to original zoom.
+- Indoor Rink Data was also classified by size and displayed with graduated symbology.
 
 Datasets:
  - Green Space in Toronto (Polygons)

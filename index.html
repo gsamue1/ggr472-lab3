@@ -34,6 +34,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- Link Home Page -->
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.html">Home</a>
           </li>
@@ -53,23 +54,23 @@
 <!-- Mapbox Map in Body -->
 <div id='map' class='map'></div>
 
-<!-- NAVIGATION ELEMENTS -->
+<!-- Navigation Elements -->
    <div class='map-overlay-search'>
     <label>Find a Rink Near You!</label>
     <div id="geocoder" class="geocoder"></div>
-    <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to Full Extent</button>
+    <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to Original View</button>
     </div>
 
-<!-- LEGEND -->
+<!-- Legend -->
 <div class='my-legend'>
   <div class='legend-title'>Rink Sizes and Types</div>
   <div class='legend-scale'>
     <ul class='legend-labels'>
       <li><span style='background:#627BC1;'></span>Outdoor Rinks</li>
-      <li><span style='background:#f35c4b;'></span>NHL (200x85)</li>
-      <li><span style='background:#e0890f;'></span>Undersized (less than 185x85)</li>
-      <li><span style='background:#eded4f;'></span>Regular (185x85)</li>
-      <li><span style='background:#918e8d;'></span>Null</li>
+      <li><span style='background:#f35c4b;'></span>Indoor - NHL (200ft x 85ft)</li>
+      <li><span style='background:#e0890f;'></span>Indoor - Undersized (less than 185ft x 85ft)</li>
+      <li><span style='background:#eded4f;'></span>Indoor - Regular (185ft x 85ft)</li>
+      <li><span style='background:#918e8d;'></span>Indoor - Null</li>
     </ul>
   </div>
   <div class='legend-source'>Source: <a href="https://open.toronto.ca/dataset/indoor-ice-rinks/">City of Toronto Open Data</a></div>
