@@ -7,31 +7,6 @@ const map = new mapboxgl.Map({
     zoom: 11.29, // starting zoom
 });
 
-//Adding Navigation Controls -- Zoom and Spin
-map.addControl(new mapboxgl.NavigationControl());
-
-//Adding Fullscreen Capacity 
-map.addControl(new mapboxgl.FullscreenControl());
-
-//Adding Geocoding Capacity -- People Can Search their Address
-const geocoder = new MapboxGeocoder({
-    accessToken: mapboxgl.accessToken,
-    mapboxgl: mapboxgl,
-    countries: "ca" 
-});
-
-//Position Geocoder on page
-document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-
-//Setting up Return Button
-document.getElementById('returnbutton').addEventListener('click', () => {
-    map.flyTo({
-        center: [-79.390, 43.663], //Coordinates Centering Page
-        zoom: 11.29,
-        essential: true
-    });
-});
-
 map.on('load', () => {
 
 //GREEN SPACE LAYER -- Perfect Locations for Snowball Fights/Sledding
@@ -101,25 +76,50 @@ map.on('load', () => {
 
 })
 
+//Adding Navigation Controls -- Zoom and Spin
+map.addControl(new mapboxgl.NavigationControl());
+
+//Adding Fullscreen Capacity 
+map.addControl(new mapboxgl.FullscreenControl());
+
+//Adding Geocoding Capacity -- People Can Search their Address
+const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    countries: "ca" 
+});
+
+//Position Geocoder on page
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+//Setting up Return Button
+document.getElementById('returnbutton').addEventListener('click', () => {
+    map.flyTo({
+        center: [-79.390, 43.663], //Coordinates Centering Page
+        zoom: 11.29,
+        essential: true
+    });
+});
+
 // UNUSED CODE -- CONFIGURING POP UPS GOING FORWARD
 //When a click event occurs on a feature in the places layer, open a popup at the
 //location of the feature, with description HTML from its properties.
-map.on('click', 'indoor-rinks-to', (e) => {
-    console.log(e);   //e is the event info triggered and is passed to the function as a parameter (e)
-     //Explore console output using Google DevTools
-    let provname = e.features[0].properties.Public_Name;
-    console.log(Public_Name);
- });
+// map.on('click', 'indoor-rinks-to', (e) => {
+//     console.log(e);   //e is the event info triggered and is passed to the function as a parameter (e)
+//      //Explore console output using Google DevTools
+//     let provname = e.features[0].properties.Public_Name;
+//     console.log(Public_Name);
+//  });
 
-// Change the cursor to a pointer when the mouse is over the places layer.
-map.on('mouseenter', 'indoor-rinks-to', () => {
-map.getCanvas().style.cursor = 'pointer';
-});
+// // Change the cursor to a pointer when the mouse is over the places layer.
+// map.on('mouseenter', 'indoor-rinks-to', () => {
+// map.getCanvas().style.cursor = 'pointer';
+// });
  
-// Change it back to a pointer when it leaves.
-map.on('mouseleave', 'indoor-rinks-to', () => {
-map.getCanvas().style.cursor = '';
-});
+// // Change it back to a pointer when it leaves.
+// map.on('mouseleave', 'indoor-rinks-to', () => {
+// map.getCanvas().style.cursor = '';
+// });
 
 // //Pop Up for Outdoor Rinks
 // map.on('click', 'indoor-rinks-to', (e) => {
