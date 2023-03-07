@@ -25,6 +25,65 @@
 </head>
 
 <body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Winter Activities in Toronto</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+        </li>
+        <!-- Link to Learn to Skate Resources -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.toronto.ca/data/parks/prd/skating/reg/learn/index.html" target="_blank">Learn to Skate Programs</a>
+        </li>
+        <!-- Link to Best Tobogganing Hills in Toronto -->
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.toronto.com/things-to-do/best-places-to-go-tobogganing-in-toronto/article_122cc2d5-51df-5c46-87ec-52a725ece0d1.html?" target="_blank">Best Tobogganing Hills</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+  <div class="image1">
+  <img src="http://images.dailyhive.com/20171218134557/Screen-Shot-2017-12-18-at-4.43.17-PM.png" alt="People Skating in Nathan Phillips Square" style="width:100%;">
+  <div class="title"><h1>Georgia's Winter Activities Webpage</h1></div>
+  </div>
+
+<!-- Map Context -->
+  <div id="introduction" class="introduction">
+  <p> 
+  Enjoy some of Canada's fun winter pass times!
+  This map provides location in Toronto where skating rinks are available throughout the winter! Red points indicates indoor rinks, while blue indicates outdoor rinks.
+  If you zoom in, you can also see the outlines of green spaces throughout the City; <strong>perfect</strong> locations for a snowball fight, sledding or winter walks after a big snow!
+  </p>
+  </div>
+
+<!-- Mapbox Map in Body -->
+    <div id='map' class='map'></div>
+
+<!-- NAVIGATION ELEMENTS -->
+    <div class='map-overlay-search'>
+      <label>Search for location</label>
+       <div id="geocoder" class="geocoder"></div>
+       <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to full extent</button>
+    </div>
+
+
+<!-- Notes about Geocoder Functionality -->
+  <div class="direction">
+  <p><center><strong>Type your address into the search bar to find rinks and parks near you!</strong></center></p> 
+  </div>
+
+<!-- Script Source -->
+  <script src="script.js"></script>
+
 </body>
 
 </html>
