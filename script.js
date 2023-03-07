@@ -65,7 +65,7 @@ map.on('load', () => {
 
     // Adding Outdoor Rink Layer to existing basemap with simple styling
     map.addLayer({
-        'id': 'outdoor-rxinks-to', // unique id develoepd for layer
+        'id': 'outdoor-rinks-to', // unique id develoepd for layer
         'type': 'circle',
         'source': 'odr', //source id that matches addSource function
         'paint': {
@@ -83,7 +83,7 @@ map.on('load', () => {
     map.addSource('idr', {
         'type': 'geojson',
         // Use a URL for the value for the `data` property.
-        'data': 'https://raw.githubusercontent.com/gsamue1/ggr472-lab2/main/indoor-ice-rinks-data.geojson' //Raw content Github Link -- going forward will develop more comprehensible link for data in website development
+        'data': 'https://raw.githubusercontent.com/gsamue1/ggr472-lab3/main/indoor-ice-rinks-data.geojson' //Raw content Github Link -- going forward will develop more comprehensible link for data in website development
     });
 
     // //Adding Indoor Rink GeoJSON geometry to existing basemap with simple styling
