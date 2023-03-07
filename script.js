@@ -7,30 +7,30 @@ const map = new mapboxgl.Map({
     zoom: 11.29, // starting zoom
 });
 
-// //Adding Navigation Controls -- Zoom and Spin
-// map.addControl(new mapboxgl.NavigationControl());
+//Adding Navigation Controls -- Zoom and Spin
+map.addControl(new mapboxgl.NavigationControl());
 
-// //Adding Fullscreen Capacity 
-// map.addControl(new mapboxgl.FullscreenControl());
+//Adding Fullscreen Capacity 
+map.addControl(new mapboxgl.FullscreenControl());
 
-// //Adding Geocoding Capacity -- People Can Search their Address
-// const geocoder = new MapboxGeocoder({
-//     accessToken: mapboxgl.accessToken,
-//     mapboxgl: mapboxgl,
-//     countries: "ca" 
-// });
+//Adding Geocoding Capacity -- People Can Search their Address
+const geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl,
+    countries: "ca" 
+});
 
-// //Position Geocoder on page
-// document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+//Position Geocoder on page
+document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-// //Setting up Return Button
-// document.getElementById('returnbutton').addEventListener('click', () => {
-//     map.flyTo({
-//         center: [-79.390, 43.663], //Coordinates Centering Page
-//         zoom: 11.29,
-//         essential: true
-//     });
-// });
+//Setting up Return Button
+document.getElementById('returnbutton').addEventListener('click', () => {
+    map.flyTo({
+        center: [-79.390, 43.663], //Coordinates Centering Page
+        zoom: 11.29,
+        essential: true
+    });
+});
 
 map.on('load', () => {
 

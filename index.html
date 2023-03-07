@@ -50,29 +50,31 @@
     </div>
   </nav>
 
-<!-- Page Header -->
-<div class="image1">
-  <img src="http://images.dailyhive.com/20171218134557/Screen-Shot-2017-12-18-at-4.43.17-PM.png" alt="People Skating in Nathan Phillips Square" style="width:100%;">
-  <div class="title"><h1>Georgia's Winter Activities Webpage</h1></div>
-</div>
-
-<!-- Map Context -->
-<div id="introduction" class="introduction">
-<p> 
-  Enjoy some of Canada's fun winter pass times!
-  This map provides location in Toronto where skating rinks are available throughout the winter! Red points indicates indoor rinks, while blue indicates outdoor rinks.
-  If you zoom in, you can also see the outlines of green spaces throughout the City; <strong>perfect</strong> locations for a snowball fight, sledding or winter walks after a big snow!
-</p>
-</div>
-
 <!-- Mapbox Map in Body -->
 <div id='map' class='map'></div>
 
-<!-- Notes about Geocoder Functionality -->
-<div class="direction">
-<p><center><strong>Type your address into the search bar to find rinks and parks near you!</strong></center></p> 
-</div>
+<!-- NAVIGATION ELEMENTS -->
+   <div class='map-overlay-search'>
+    <label>Find a Rink Near You!</label>
+    <div id="geocoder" class="geocoder"></div>
+    <button type="button" class="btn btn-primary btn-sm" id="returnbutton">Return to Full Extent</button>
+    </div>
 
+<!-- LEGEND -->
+<div class='my-legend'>
+  <div class='legend-title'>Indoor Rink Sizes</div>
+  <div class='legend-scale'>
+    <ul class='legend-labels'>
+      <li><span style='background:#FB8072;;'></span>NHL (200X85)</li>
+      <li><span style='background:#FFFFB3;'></span>Undersized (less than 185X85)</li>
+      <li><span style='background:#BEBADA;'></span>Regular (185X85)</li>
+      <li><span style='background:#918e8d;'></span>Null</li>
+    </ul>
+  </div>
+  <div class='legend-source'>Source: <a href="https://open.toronto.ca/dataset/indoor-ice-rinks/">City of Toronto Open Data</a></div>
+</div>
+  
+  
 <!-- Script Source -->
 <script src="script.js"></script>
 
