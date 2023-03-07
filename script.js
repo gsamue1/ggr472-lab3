@@ -1,5 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZ3NhbXVlbC11b2Z0IiwiYSI6ImNsY3lieDA3MjJjNnAzcGs2NmxoMndpeGIifQ.PKKRKM7-HRYK7TuPgztVzg'; //default public map token from Mapbox account 
 
+//Activating Base Map
 const map = new mapboxgl.Map({
     container: 'map', // div container ID for map
     style: 'mapbox://styles/gsamuel-uoft/cle4l4pr5001t01ljheblcl08', // Link to mapbox style URL
@@ -7,6 +8,7 @@ const map = new mapboxgl.Map({
     zoom: 11.29, // starting zoom
 });
 
+//Adding Layers to map when map loads
 map.on('load', () => {
 
 //GREEN SPACE LAYER -- Perfect Locations for Snowball Fights/Sledding
@@ -95,10 +97,10 @@ const geocoder = new MapboxGeocoder({
     countries: "ca" 
 });
 
-//Position Geocoder on page
+//Positioning Geocoder on Page
 document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
 
-//Setting up Return Button
+//Setting up Return Button -- Return Zoom to Original Extent
 document.getElementById('returnbutton').addEventListener('click', () => {
     map.flyTo({
         center: [-79.390, 43.663], //Coordinates Centering Page
@@ -175,3 +177,8 @@ document.getElementById('returnbutton').addEventListener('click', () => {
 
     // GREEN SPACE
     //Elected not to use pop-ups for green space because of the sheer volume, number of unnamed spaces, inability to view parks from a high level and to prevent distraction away for ice rinks as core focus of the map. 
+
+//////////////////// NEXT STEPS ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Addition of address and lighting (outdoor rinks) information in pop-ups
+// Filtering Capacity for Indoor or Outdoor Rinks
+// Test Ant trail between geocoded location and rinks
